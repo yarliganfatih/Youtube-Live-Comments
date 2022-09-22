@@ -1,0 +1,217 @@
+.commentBar {
+  overflow: hidden;
+  position: absolute;
+  width: 350px;
+  height: 1080px;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.commentBar > .chat {
+  --color: 255, 0, 0;
+  --icon-size: 30px;
+  --border-radius: 12px;
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-height: 100px;
+  min-height: 45px;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  margin: 5px 0;
+  padding: 1rem 2rem 1rem calc(var(--icon-size) + 40px);
+  box-sizing: border-box;
+  flex-shrink: 0;
+  opacity: 0.8;
+  transform: translateZ(1);
+  transition: all 0.2s ease;
+  animation: 0.3s ease popup;
+  cursor: pointer;
+}
+
+.commentBar > .chat:hover {
+  opacity: 1;
+  height: auto;
+  max-height: initial !important;
+}
+
+.commentBar > .chat.fadeout {
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+.commentBar > .chat .background {
+  display: block;
+  position: absolute;
+  border-radius: var(--border-radius);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 40%,
+    rgba(var(--color), 0.2) 100%
+  );
+  background-size: 200% 100%;
+  background-position: 40% 50%;
+  animation: 1s ease glow;
+}
+
+.commentBar > .chat:hover > .background {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.75) 40%,
+    rgba(var(--color), 0.75) 100%
+  );
+}
+
+.commentBar > .chat > .icon {
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  height: 100%;
+}
+
+.commentBar > .chat > .icon > img {
+  display: block;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  border-radius: 50%;
+  background: rgba(var(--color), 1);
+}
+
+.commentBar > .chat > .content {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.commentBar > .chat > .content > .title {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 1.2rem;
+  height: 1rem;
+  line-height: 1rem;
+}
+
+.commentBar > .chat > .content > .title > .name {
+  color: rgba(var(--color), 1);
+}
+
+.commentBar > .chat > .content > .title > .time {
+  color: white !important;
+}
+
+.commentBar > .chat > .content > .text {
+  display: block;
+  margin-top: 5px;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: rgba(175, 175, 175, 1);
+}
+
+@keyframes glow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 40% 50%;
+  }
+}
+
+@keyframes popup {
+  0% {
+    margin-bottom: -20px;
+    transform: scale(0.9) translateZ(0);
+    opacity: 0;
+  }
+  70% {
+    opacity: 0.5;
+  }
+  100% {
+    margin-bottom: 0px;
+    transform: scale(1) translateZ(0);
+    opacity: 0.75;
+  }
+}
+
+@keyframes animateGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes chatTime {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.95) translateZ(0);
+  }
+  50% {
+    transform: scale(1.05) translateZ(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateZ(0);
+    opacity: 0.8;
+  }
+}
+
+@keyframes bgTime {
+  0% {
+    opacity:0.1;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.75) 40%,
+      rgba(var(--color), 0.75) 100%
+    );
+  }
+  50% {
+    opacity:1;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.75) 40%,
+      rgba(var(--color), 0.75) 100%
+    );
+  }
+  100% {
+    opacity:0.1;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.75) 40%,
+      rgba(var(--color), 0.75) 100%
+    );
+  }
+}
