@@ -8,6 +8,8 @@ const settings = {
     "delay": { defaultValue: -3, eventType: 'change' },
     "max_comments_per_second": { defaultValue: 5, eventType: 'change' },
     "api_key": { defaultValue: 'AIzaSyApdeF5XnARtbWx_-j_05pvPvoc8DVyyLY', eventType: 'change' },
+
+    "normalize_shorts": { defaultValue: true, eventType: 'change' },
 };
 
 const cache = {};
@@ -21,8 +23,20 @@ try {
     console.log(e);
 }
 
+const resultsPageRegex = new RegExp('.*://.*youtube\.com/results.*', 'i');
+const shortsRegex = new RegExp('.*://.*youtube\.com/shorts.*', 'i');
+function handleRedirects() {
+    const currentUrl = location.href;
+    const onShorts = shortsRegex.test(currentUrl);
+    if (onShorts && cache['normalize_shorts']) {
+        const newUrl = currentUrl.replace('shorts', 'watch');
+        location.replace(newUrl);
+    }
+}
+
 function urlControl() {
     if (!cache['active']) return;
+    handleRedirects();
     if (location.host == "www.youtube.com" && location.pathname == "/watch") {
         prepareCommentBar();
         const urlParams = new URLSearchParams(location.search);

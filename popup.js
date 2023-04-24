@@ -8,6 +8,8 @@ const settings = {
     "delay": { defaultValue: -3, eventType: 'change' },
     "max_comments_per_second": { defaultValue: 5, eventType: 'change' },
     "api_key": { defaultValue: 'AIzaSyApdeF5XnARtbWx_-j_05pvPvoc8DVyyLY', eventType: 'change' },
+
+    "normalize_shorts": { defaultValue: true, eventType: 'change' },
 };
 
 const fillPopupOptions = (key, value) => {
@@ -65,6 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     browser.browserAction.setBadgeText({ text: 'OFF' });
                     browser.browserAction.setBadgeBackgroundColor({ color: [128, 128, 128, 1] });
                 }
+            }
+
+            if((element.type == "checkbox")){
                 browser.tabs.query({ active: true, currentWindow: true }, tabs => {
                     tabs.forEach(tab => browser.tabs.reload(tab.id));
                 });
