@@ -1,71 +1,34 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <script src="jquery-1.11.1.min.js" ></script>
-  <script src="popup.js"></script>
-  <script src="background.js"></script>
-  <script src="script.js" type="text/javascript" charset="utf-8"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube Live Comments</title>
+</head>
 
-  </head>
-<div class="container">
-    <button type="button1" class="button1" id="disableButton">Toggle</button>
+<body>
+    <form>
+        <div class="field">
+            <input type="checkbox" id="active" />
+            <label for="active"><b>Live Comments</b></label>
+        </div>
+        <hr>
+        <div class="field">
+            <label for="delay">Delay</label>
+            <input type="number" id="delay" />
+        </div>
+        <div class="field">
+            <label for="max_comments_per_second">Max comments per second</label>
+            <input type="number" id="max_comments_per_second" />
+        </div>
+        <div class="field">
+            <label for="api_key">Youtube Data API key</label>
+            <input type="text" id="api_key" />
+        </div>
+    </form>
     <script src="popup.js"></script>
-</div>
-<style>
-    @import url('css/bootstrap.min.css');
-    .notice {
-        width: 300px;
-        height: 30px;
-        padding: 15px;
-        background-color: #fafafa;
-        border-left: 6px solid #7f7f84;
-        margin-bottom: 10px;
-        -webkit-box-shadow: 0 5px 8px -6px rgba(0, 0, 0, .2);
-        -moz-box-shadow: 0 5px 8px -6px rgba(0, 0, 0, .2);
-        box-shadow: 0 5px 8px -6px rgba(0, 0, 0, .2);
-    }
-
-    .notice-sm {
-        padding: 10px;
-        font-size: 80%;
-    }
-
-    .notice-lg {
-        padding: 35px;
-        font-size: large;
-    }
-
-    .notice-success {
-        border-color: #80D651;
-    }
-
-    .notice-success>strong {
-        color: #80D651;
-    }
-
-    .notice-info {
-        border-color: #45ABCD;
-    }
-
-    .notice-info>strong {
-        color: #45ABCD;
-    }
-
-    .notice-warning {
-        border-color: #FEAF20;
-    }
-
-    .notice-warning>strong {
-        color: #FEAF20;
-    }
-
-    .notice-danger {
-        border-color: #d73814;
-    }
-
-    .notice-danger>strong {
-        color: #d73814;
-    }
-</style>
+</body>
 
 </html>
